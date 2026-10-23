@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore AI-powered advertising video packages from Averynza Studios, from Essential Ads to cinematic brand films.">
+  <title>Creative Packages & Pricing | AVERYNZA STUDIOS</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .pricing-page{--gold:#d8b56a;--gold-bright:#f4d58b;--ink:#080808;--panel:#111;--muted:#b7b3aa;color:#f7f4ed;background:#080808;min-height:100vh}
+    .pricing-hero{padding:clamp(4rem,9vw,8rem) 1.25rem 3rem;text-align:center;background:radial-gradient(ellipse at 50% 0%,rgba(216,181,106,.17),transparent 58%)}
+    .pricing-eyebrow{color:var(--gold-bright);letter-spacing:.24em;text-transform:uppercase;font-size:.75rem;font-weight:700}
+    .pricing-hero h1{font-size:clamp(2.4rem,6vw,5.4rem);line-height:1.05;max-width:950px;margin:1rem auto;background:linear-gradient(110deg,#fff 20%,#e4c77f 55%,#fff0c4 80%);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .pricing-hero p{max-width:760px;margin:1rem auto;color:#c9c4b9;line-height:1.8}
+    .pricing-wrap{width:min(1180px,calc(100% - 2rem));margin:0 auto;padding:2rem 0 5rem}
+    .pricing-section-title{text-align:center;margin:2rem auto 2.5rem}
+    .pricing-section-title h2{font-size:clamp(1.8rem,4vw,3rem);margin:.4rem 0;color:#f8f4eb}
+    .pricing-section-title p{color:var(--muted);line-height:1.7}
+    .pricing-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.2rem}
+    .price-card{position:relative;border:1px solid rgba(216,181,106,.28);border-radius:18px;padding:clamp(1.35rem,3vw,2rem);background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.018));box-shadow:0 18px 45px rgba(0,0,0,.22);display:flex;flex-direction:column;min-width:0}
+    .price-card.featured{border-color:rgba(244,213,139,.78);background:linear-gradient(145deg,rgba(216,181,106,.13),rgba(255,255,255,.025))}
+    .price-tag{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-bright);font-weight:700}
+    .price-card h3{font-size:1.6rem;margin:.65rem 0 .35rem}
+    .price-amount{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;letter-spacing:-.04em;color:#f4d58b;line-height:1.2}
+    .price-amount small{font-size:.88rem;font-weight:500;letter-spacing:0;color:#c8c2b6}
+    .price-meta{color:#c9c4b9;margin:.65rem 0 1rem;font-size:.93rem}
+    .price-card ul{padding:0;margin:.5rem 0 1.5rem;list-style:none;display:grid;gap:.7rem}
+    .price-card li{color:#e3dfd6;line-height:1.5;padding-left:1.45rem;position:relative}
+    .price-card li:before{content:"✦";position:absolute;left:0;color:var(--gold-bright);font-size:.8rem;top:.15rem}
+    .price-card .price-cta{margin-top:auto;display:inline-flex;align-items:center;justify-content:center;text-align:center;text-decoration:none;background:linear-gradient(110deg,#b58b3e,#f4d58b);color:#16110a;font-weight:800;padding:.9rem 1rem;border-radius:999px;transition:transform .2s,filter .2s}
+    .price-card .price-cta:hover{transform:translateY(-2px);filter:brightness(1.08)}
+    .price-card .secondary-cta{background:transparent;color:#f4d58b;border:1px solid rgba(244,213,139,.55)}
+    .pricing-note{text-align:center;color:#aaa59a;font-size:.9rem;line-height:1.7;margin:1.5rem auto 0;max-width:850px}
+    .monthly-panel{display:grid;grid-template-columns:1.05fr 1fr;gap:2rem;align-items:center;border:1px solid rgba(216,181,106,.45);border-radius:22px;padding:clamp(1.5rem,4vw,3rem);background:radial-gradient(ellipse at top left,rgba(216,181,106,.14),transparent 65%),#101010}
+    .monthly-panel h2{font-size:clamp(2rem,4vw,3.4rem);margin:.7rem 0}
+    .monthly-panel .lead{color:#c9c4b9;line-height:1.8}
+    .monthly-price{font-size:clamp(2.4rem,5vw,4rem);font-weight:850;color:#f4d58b;line-height:1.1}
+    .monthly-price span{display:block;font-size:1rem;color:#c9c4b9;font-weight:500;margin-top:.35rem}
+    .monthly-panel ul{list-style:none;padding:0;margin:1.3rem 0;display:grid;gap:.7rem}
+    .monthly-panel li{padding-left:1.4rem;position:relative;color:#e4dfd4;line-height:1.5}
+    .monthly-panel li:before{content:"✓";position:absolute;left:0;color:#f4d58b;font-weight:800}
+    .ideal-for{border-left:2px solid #cba85d;padding:.2rem 0 .2rem 1rem;color:#c9c4b9;line-height:1.7;margin:1.25rem 0}
+    .custom-quote{margin-top:5rem;text-align:center;padding:clamp(2rem,6vw,4rem) 1.25rem;border:1px solid rgba(216,181,106,.25);border-radius:22px;background:radial-gradient(ellipse at 50% 0%,rgba(216,181,106,.13),transparent 70%),#101010}
+    .custom-quote h2{font-size:clamp(2rem,4.5vw,3.5rem);margin:.6rem 0}
+    .custom-quote p{max-width:800px;margin:.8rem auto;color:#c9c4b9;line-height:1.8}
+    .quote-actions{display:flex;justify-content:center;gap:.8rem;flex-wrap:wrap;margin-top:1.5rem}
+    .quote-actions a{display:inline-flex;justify-content:center;text-decoration:none;padding:.95rem 1.35rem;border-radius:999px;background:linear-gradient(110deg,#b58b3e,#f4d58b);color:#151009;font-weight:800}
+    .quote-actions a:last-child{background:transparent;color:#f4d58b;border:1px solid rgba(244,213,139,.6)}
+    .pricing-page a:focus-visible{outline:2px solid #fff0bd;outline-offset:4px}
+    @media(max-width:760px){.pricing-grid{grid-template-columns:1fr}.monthly-panel{grid-template-columns:1fr}.pricing-wrap{width:min(100% - 1.2rem,600px)}.pricing-hero{padding-top:4rem}}
+  </style>
+</head>
+<body>
+<header class="site-header">
+<a class="brand" href="index.html" aria-label="Averynza Studios home"><img class="brand-logo" src="Averynza Studios Golden Emblem.png" alt="Averynza Studios"></a>
+<button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mainNav" aria-label="Open navigation"><span></span><span></span></button>
+<nav class="navigation" id="mainNav" aria-label="Main navigation">
+<a href="index.html">Home</a>
+<a href="index.html#services">Services</a>
+<a href="index.html#studio">Studio</a>
+<a href="index.html#contact" >Contact</a>
+<!-- <a href="pricing.html">Packages</a> -->
+<div class="nav-dropdown">
+<button class="nav-dropdown-toggle nav-cta active" type="button" aria-expanded="false" aria-controls="industriesMenu">Industries <span aria-hidden="true">▾</span></button>
+<div class="nav-dropdown-menu" id="industriesMenu">
+<a href="industries.html#all">All</a>
+<a href="industries.html#adfilms">Ad Films</a>
+<a href="industries.html#aifilms">AI Films</a>
+<a href="industries.html#architecture">Architecture &amp; Infrastructure</a>
+<a href="industries.html#corporate">Corporate</a>
+<a href="industries.html#promo">Promotional</a>
+<a href="industries.html#social">Social Media</a>
+<a href="industries.html#others">Others</a>
+</div></div>
+</nav></header>
+<main class="pricing-page">
+  <section class="pricing-hero">
+    <div class="pricing-eyebrow">AVERYNZA STUDIOS · AI-POWERED ADVERTISING</div>
+    <h1>Creative Packages, Crafted Around Your Brand</h1>
+    <p><strong>Exceptional Visuals. Flexible Creative Solutions.</strong><br>From short promotional videos to cinematic brand films, we create AI-powered advertising tailored to your brand, audience and campaign goals.</p>
+    <p>Choose a package that suits your needs, or let us create a customized solution for your next big idea.</p>
+  </section>
+
+  <div class="pricing-wrap">
+    <section aria-labelledby="monthly-heading">
+      <div class="pricing-section-title">
+        <div class="pricing-eyebrow">MONTHLY PLAN · ENTRY LEVEL</div>
+        <h2 id="monthly-heading">Essential Ad — Monthly</h2>
+        <p>Consistent promotional content for growing businesses.</p>
+      </div>
+      <article class="monthly-panel">
+        <div>
+          <div class="price-tag">Affordable · Monthly plan</div>
+          <h2>Essential Ad</h2>
+          <div class="monthly-price">₹14,999 <span>/ month</span></div>
+          <p class="lead">For small businesses that need consistent promotional content without the cost of a full-scale production.</p>
+          <div class="ideal-for"><strong>Ideal for:</strong> restaurants, food brands, boutiques, local retailers, small product businesses and social media promotions.</div>
+          <a class="price-cta" href="index.html#contact">Enquire About This Package</a>
+        </div>
+        <div>
+          <h3>What's included</h3>
+          <ul>
+            <li>3 AI promotional videos per month</li>
+            <li>Up to 30 seconds per video</li>
+            <li>Up to 720p HD resolution</li>
+            <li>Basic AI visuals and editing</li>
+            <li>Background music</li>
+            <li>One agreed aspect ratio per video</li>
+            <li>One revision round per video</li>
+            <li>Client-provided product images, logo and content</li>
+            <li>Monthly delivery schedule agreed at the start</li>
+          </ul>
+          <p class="price-meta">Voice-over, complex storylines, extra revisions, multiple aspect ratios and urgent delivery are available as paid add-ons.</p>
+        </div>
+      </article>
+    </section>
+
+    <section aria-labelledby="one-time-heading">
+      <div class="pricing-section-title">
+        <div class="pricing-eyebrow">ONE-TIME PROJECTS</div>
+        <h2 id="one-time-heading">Find Your Creative Fit</h2>
+        <p>Clear options for everything from a simple promotional video to a full brand story.</p>
+      </div>
+      <div class="pricing-grid">
+        <article class="price-card">
+          <div class="price-tag">Entry-level production</div>
+          <h3>Essential Ad</h3>
+          <div class="price-amount">₹6,999</div>
+          <p class="price-meta">Up to 30 seconds · 720p HD</p>
+          <ul>
+            <li>One simple AI promotional video</li>
+            <li>Basic editing and background music</li>
+            <li>One agreed aspect ratio</li>
+            <li>No revisions after production begins</li>
+            <li>Target delivery: 5–7 working days</li>
+          </ul>
+          <a class="price-cta secondary-cta" href="index.html#contact">Enquire About Essential</a>
+        </article>
+
+        <article class="price-card featured">
+          <div class="price-tag">Popular choice</div>
+          <h3>Signature Ad</h3>
+          <div class="price-amount">₹14,999–₹19,999</div>
+          <p class="price-meta">Up to 30 seconds · 1080p Full HD</p>
+          <ul>
+            <li>Creative concept and script</li>
+            <li>Multi-scene AI commercial</li>
+            <li>Voice-over, music and sound design</li>
+            <li>One primary aspect ratio</li>
+            <li>Two consolidated revision rounds</li>
+            <li>Target delivery: 7–12 working days</li>
+          </ul>
+          <a class="price-cta" href="index.html#contact">Choose Signature</a>
+        </article>
+
+        <article class="price-card">
+          <div class="price-tag">Cinematic storytelling</div>
+          <h3>Cinematic Campaign</h3>
+          <div class="price-amount">₹29,999–₹49,999</div>
+          <p class="price-meta">30–60 seconds · 1080p Full HD</p>
+          <ul>
+            <li>Detailed concept and storyboard</li>
+            <li>Cinematic, multi-scene production</li>
+            <li>Voice-over and sound design</li>
+            <li>One agreed alternate cutdown or version</li>
+            <li>Two consolidated revision rounds</li>
+            <li>Target delivery: 10–18 working days</li>
+          </ul>
+          <a class="price-cta secondary-cta" href="index.html#contact">Plan a Campaign</a>
+        </article>
+
+        <article class="price-card">
+          <div class="price-tag">Bespoke production</div>
+          <h3>Brand Film</h3>
+          <div class="price-amount">₹59,999–₹1,49,999+</div>
+          <p class="price-meta">1–3 minutes · Custom production</p>
+          <ul>
+            <li>Corporate films and brand storytelling</li>
+            <li>Script, storyboard and creative direction</li>
+            <li>Multi-scene AI film production</li>
+            <li>Voice-over, music and professional editing</li>
+            <li>Two revision rounds at agreed milestones</li>
+            <li>Delivery schedule based on project scope</li>
+          </ul>
+          <a class="price-cta secondary-cta" href="index.html#contact">Discuss a Brand Film</a>
+        </article>
+      </div>
+      <p class="pricing-note">All prices are starting prices. Final quotations depend on video duration, creative complexity, deliverables and production requirements.</p>
+    </section>
+
+    <section class="custom-quote" aria-labelledby="quote-heading">
+      <div class="pricing-eyebrow">LET'S CREATE SOMETHING DISTINCTIVE</div>
+      <h2 id="quote-heading">Not Sure Which Package Is Right for You?</h2>
+      <p>Every brand has a different story to tell. Whether you're promoting jewellery, food, cosmetics, footwear, automobiles, real estate or a corporate brand, we'll help you find the right creative approach for your goals and budget.</p>
+      <h3>Need a Custom Quote? Let's Talk.</h3>
+      <p>Tell us about your brand, your vision and what you want to achieve. Our team will recommend a suitable package and provide a tailored quotation based on your requirements.</p>
+      <div class="quote-actions">
+        <a href="index.html#contact">Get a Custom Quote</a>
+        <a href="mailto:averynzastudios@gmail.com?subject=Project%20Enquiry%20%E2%80%94%20Averynza%20Studios">Let's Discuss Your Project</a>
+      </div>
+      <p><em>No obligation. Just a conversation about bringing your ideas to life.</em></p>
+    </section>
+  </div>
+</main>
+<footer class="site-footer"><div class="footer-top">
+<a class="brand footer-brand" href="index.html"><img class="brand-logo" src="Averynza Studios Golden Emblem.png" alt="Averynza Studios"></a>
+<p>AI-powered films.<br>Advertising. Visual stories.</p><a class="back-to-top" href="#">Back to top ↑</a>
+</div><div class="footer-bottom"><span>© <span id="year">2026</span> Averynza Studios. All rights reserved.</span>
+<div><a href="index.html#studio">About</a><a href="auth.html">Account</a><a href="mailto:averynzastudios@gmail.com">Email</a></div></div></footer>
+<script>
+  document.getElementById("year")?.replaceChildren(document.createTextNode(new Date().getFullYear()));
+</script>
+</body>
+</html>

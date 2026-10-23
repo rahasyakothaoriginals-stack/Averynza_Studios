@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080909"><title>Our Work | Averynza Studios</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"><script src="script.js" defer></script>
+</head>
+<body>
+<header class="site-header">
+<a class="brand" href="index.html" aria-label="Averynza Studios home">
+    <img class="brand-logo" src="Averynza Studios Golden Emblem.png" alt="Averynza Studios"></a>
+<button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mainNav" aria-label="Open navigation"><span></span><span></span>
+</button>
+<nav class="navigation" id="mainNav" aria-label="Main navigation">
+<a href="index.html">Home</a>
+<a href="index.html#services">Services</a>
+<a href="index.html#studio">Studio</a>
+<a href="index.html#contact" >Contact</a>
+<a href="pricing.html">Packages</a>
+<div class="nav-dropdown">
+<button class="nav-dropdown-toggle nav-cta active" type="button" aria-expanded="false" aria-controls="industriesMenu">Industries <span aria-hidden="true">▾</span></button>
+<div class="nav-dropdown-menu" id="industriesMenu">
+<a href="industries.html#all">All</a>
+<a href="industries.html#adfilms">Ad Films</a>
+<a href="industries.html#aifilms">AI Films</a>
+<a href="industries.html#architecture">Architecture &amp; Infrastructure</a>
+<a href="industries.html#corporate">Corporate</a>
+<a href="industries.html#promo">Promotional</a>
+<a href="industries.html#social">Social Media</a>
+<a href="industries.html#others">Others</a>
+</div>
+</div>
+</nav>
+</header>
+<main class="page-shell">
+<div class="page-topline"><span class="page-eyebrow">AVERYNZA STUDIOS / PORTFOLIO</span>
+<h1 class="page-title">Work that leaves<br><span>a lasting impression.</span></h1>
+<p class="page-lead">A growing collection of films, campaign concepts, brand visuals and creative experiments. Add your next project to the projects list in <code>script.js</code>.</p>
+<div class="page-actions"><a class="gold-button" href="index.html#contact">Start a project ↗</a>
+</div>
+</div>
+<div class="section-heading"><div><span class="eyebrow">SELECTED PROJECTS</span>
+    <h2>Our work.</h2>
+</div>
+<span class="section-number" id="projectCount">PROJECT COLLECTION</span>
+</div>
+<nav class="portfolio-filters" aria-label="Portfolio industries">
+<a href="industries.html#all">All</a>
+<a href="industries.html#adfilms">Ad Films</a>
+<a href="industries.html#aifilms">AI Films</a>
+<a href="industries.html#architecture">Architecture &amp; Infrastructure</a>
+<a href="industries.html#corporate">Corporate</a>
+<a href="industries.html#promo">Promotional</a>
+<a href="industries.html#social">Social Media</a>
+<a href="industries.html#others">Others</a>
+</nav>
+<div class="portfolio-grid" id="portfolioGrid" aria-live="polite"></div>
+<div class="notice" style="margin-top:35px">Portfolio note: these are starter sample entries. Replace their images, descriptions and links with your actual completed client work before publishing.</div>
+</main>
+<footer class="site-footer"><div class="footer-top">
+<a class="brand footer-brand" href="index.html">
+    <img class="brand-logo" src="Averynza Studios Golden Emblem.png" alt="Averynza Studios"></a>
+<p>AI-powered films.<br>Advertising. Visual stories.</p><a class="back-to-top" href="#">Back to top ↑</a>
+</div><div class="footer-bottom"><span>© <span id="year">2026</span> Averynza Studios. All rights reserved.</span>
+<div><a href="index.html#studio">About</a>
+    <a href="auth.html">Account</a>
+    <a href="mailto:averynzastudios@gmail.com">Email</a></div></div></footer>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+ const dropdowns = document.querySelectorAll(".nav-dropdown");
+ dropdowns.forEach(function (dropdown) {
+  const button = dropdown.querySelector(".nav-dropdown-toggle");
+  button.addEventListener("click", function (event) {
+   event.stopPropagation();
+   const opening = !dropdown.classList.contains("is-open");
+   dropdowns.forEach(function (other) {
+    other.classList.remove("is-open");
+    other.querySelector(".nav-dropdown-toggle")?.setAttribute("aria-expanded", "false");
+   });
+   if (opening) { dropdown.classList.add("is-open"); button.setAttribute("aria-expanded", "true"); }
+  });
+ });
+ document.addEventListener("click", function (event) {
+  dropdowns.forEach(function (dropdown) {
+   if (!dropdown.contains(event.target)) {
+    dropdown.classList.remove("is-open");
+    dropdown.querySelector(".nav-dropdown-toggle")?.setAttribute("aria-expanded", "false");
+   }
+  });
+ });
+ document.addEventListener("keydown", function (event) {
+  if (event.key === "Escape") dropdowns.forEach(function (dropdown) {
+   dropdown.classList.remove("is-open");
+   dropdown.querySelector(".nav-dropdown-toggle")?.setAttribute("aria-expanded", "false");
+  });
+ });
+});
+</script>
+</body></html>
