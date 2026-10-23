@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080909">
+  <title>Industries & Video Portfolio | Averynza Studios</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .industry-page { min-height: 70vh; padding: clamp(42px, 7vw, 90px) 7%; }
+    .industry-intro { max-width: 850px; margin-bottom: 38px; }
+    .industry-intro h1 { margin: 14px 0; font: 600 clamp(38px, 6vw, 76px)/1.08 var(--font-heading, Manrope,sans-serif); letter-spacing: -.05em; }
+    .industry-intro h1 span { color: var(--gold, #dca642); }
+    .industry-intro p { max-width: 680px; color: var(--muted, #aaa69b); line-height: 1.9; }
+    .industry-filters { display:flex; flex-wrap:wrap; gap:10px; margin: 28px 0 34px; }
+    .industry-filter { padding: 11px 15px; border:1px solid var(--line, #30291d); color:var(--gold-light, #ffe0a0); background:transparent; cursor:pointer; font:600 12px "DM Sans",sans-serif; }
+    .industry-filter:hover, .industry-filter[aria-pressed="true"] { color:#080909; background:linear-gradient(120deg,#ffe0a0,#dca642,#bd8129); border-color:#dca642; }
+    .industry-video-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:22px; }
+    .industry-video-card { min-width:0; border:1px solid var(--line, #30291d); background:var(--bg-card, #141310); overflow:hidden; }
+    .industry-video-card video { display:block; width:100%; aspect-ratio:16/10; object-fit:cover; background:#050606; }
+    .industry-video-copy { padding:20px; }
+    .industry-video-copy .eyebrow { color:var(--gold-light,#ffe0a0); font-size:10px; font-weight:700; letter-spacing:1.5px; }
+    .industry-video-copy h2 { margin:9px 0 7px; font:600 21px/1.3 var(--font-heading,Manrope,sans-serif); }
+    .industry-video-copy p { color:var(--muted,#aaa69b); font-size:13px; line-height:1.8; }
+    .industry-video-copy .video-hint { display:block; margin-top:12px; color:#bcae92; font-size:11px; }
+    .industry-empty { display:none; color:var(--muted,#aaa69b); padding:24px 0; }
+    @media(max-width:950px) { .industry-video-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+    @media(max-width:620px) { .industry-page { padding-left:6%; padding-right:6%; } .industry-video-grid { grid-template-columns:1fr; } .industry-video-copy { padding:17px; } }
+  </style>
+
+<style>
+.site-header { overflow: visible !important; }
+.site-header .navigation { position: relative; }
+.nav-dropdown { position: relative; flex: 0 0 auto; }
+.nav-dropdown-toggle {
+  display:inline-flex; align-items:center; justify-content:center; gap:10px;
+  min-height:48px; border:1px solid rgba(255,224,160,.5); cursor:pointer;
+}
+.nav-dropdown-menu {
+  position:absolute; top:calc(100% + 12px); right:0; z-index:3000;
+  width:min(320px,calc(100vw - 32px)); padding:10px;
+  background:#090a09; border:1px solid #60451e;
+  box-shadow:0 18px 40px rgba(0,0,0,.48);
+  display:none; visibility:hidden; opacity:0; transform:translateY(-6px);
+}
+.nav-dropdown.is-open .nav-dropdown-menu,
+.nav-dropdown:focus-within .nav-dropdown-menu {
+  display:block; visibility:visible; opacity:1; transform:translateY(0);
+}
+.nav-dropdown-menu a {
+  display:block; padding:13px 14px; color:#ded8cb; font-size:13px;
+  line-height:1.4; border-bottom:1px solid rgba(220,166,66,.13); white-space:normal;
+}
+.nav-dropdown-menu a:last-child { border-bottom:0; }
+.nav-dropdown-menu a:hover,.nav-dropdown-menu a:focus-visible {
+  color:#ffe0a0; background:rgba(220,166,66,.08);
+}
+@media(max-width:820px) {
+  .site-header .navigation .nav-dropdown { width:100%; }
+  .site-header .navigation .nav-dropdown-toggle { width:100%; margin-top:10px; }
+  .nav-dropdown-menu { position:static; width:100%; margin-top:8px; box-shadow:none; }
+}
+</style>
+
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="index.html" aria-label="Averynza Studios home">
+    <img class="brand-logo" src="Averynza Studios Golden Emblem.png" alt="Averynza Studios">
+  </a>
+  <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mainNav" aria-label="Open navigation"><span></span><span></span></button>
+  <nav class="navigation" id="mainNav" aria-label="Main navigation">
+    <a href="index.html">Home</a>
+    <a href="index.html#services">Services</a>
+    <a href="index.html#studio">Studio</a>
+    <a href="index.html#contact">Contact</a>
+    <a href="pricing.html">Packages</a>
+    <div class="nav-dropdown">
+      <button class="nav-dropdown-toggle nav-cta active" type="button" aria-expanded="false" aria-controls="industriesMenu">Industries <span aria-hidden="true">▾</span></button>
+      <div class="nav-dropdown-menu" id="industriesMenu">
+        <a href="industries.html#all">All</a>
+        <a href="industries.html#adfilms">Ad Films</a>
+        <a href="industries.html#aifilms">AI Films</a>
+        <a href="industries.html#architecture">Architecture &amp; Infrastructure</a>
+        <a href="industries.html#corporate">Corporate</a>
+        <a href="industries.html#promo">Promotional</a>
+        <a href="industries.html#social">Social Media</a>
+        <a href="industries.html#others">Others</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main class="industry-page">
+  <div class="industry-intro">
+    <span class="page-eyebrow">AVERYNZA STUDIOS / VIDEO PORTFOLIO</span>
+    <h1>Films for every <span>industry.</span></h1>
+    <p>Explore our AI-powered ad films and visual campaigns. Choose an industry to filter the collection, or select “All” to see every video.</p>
+  </div>
+
+  <nav class="industry-filters" aria-label="Filter videos by industry">
+    <button class="industry-filter" type="button" data-filter="all" id="filter-all" aria-pressed="true">All</button>
+    <button class="industry-filter" type="button" data-filter="Ad Films" id="filter-adfilms" aria-pressed="false">Ad Films</button>
+    <button class="industry-filter" type="button" data-filter="Ai Films" id="filter-aifilms" aria-pressed="false">Ai Films</button>
+    <button class="industry-filter" type="button" data-filter="architecture" id="filter-architecture" aria-pressed="false">Architecture &amp; Infrastructure</button>
+    <button class="industry-filter" type="button" data-filter="Corporate" id="filter-corporate" aria-pressed="false">Corporate</button>
+    <button class="industry-filter" type="button" data-filter="Promotional" id="filter-promo" aria-pressed="false">Promotional</button>
+    <button class="industry-filter" type="button" data-filter="Social Media" id="filter-social" aria-pressed="false">Social Media</button>
+    <button class="industry-filter" type="button" data-filter="Others" id="filter-others" aria-pressed="false">Others</button>
+  </nav>
+
+  <div class="industry-video-grid" id="industryVideoGrid">
+    <article class="industry-video-card" data-category="Ad Films">
+      <video controls playsinline preload="metadata" aria-label="Jewellery AI advertisement">
+        <source src="https://f2oauhmkvacbdhch.public.blob.vercel-storage.com/Jweelery_AI_Ads.mp4" type="video/mp4">
+        Your browser does not support HTML video.
+      </video>
+      <div class="industry-video-copy">
+        <span class="eyebrow">Ad Films</span>
+        <h2>Jewellery AI Ads</h2>
+        <p>A product-focused visual showcase designed to give jewellery a premium advertising look.</p>
+        <small class="video-hint">Use the video controls to play with sound.</small>
+      </div>
+    </article>
+
+    <article class="industry-video-card" data-category="Promotional">
+      <video controls playsinline preload="metadata" aria-label="Ponara package advertisement">
+        <source src="https://f2oauhmkvacbdhch.public.blob.vercel-storage.com/Ponara_Package.mp4" type="video/mp4">
+        Your browser does not support HTML video.
+      </video>
+      <div class="industry-video-copy">
+        <span class="eyebrow">Promotional</span>
+        <h2>Ponara Package</h2>
+        <p>A packaging-led promotional video for product presentation and brand awareness.</p>
+        <small class="video-hint">Use the video controls to play with sound.</small>
+      </div>
+    </article>
+
+    <article class="industry-video-card" data-category="architecture">
+      <video controls playsinline preload="metadata" aria-label="Real estate AI advertisement">
+        <source src="https://f2oauhmkvacbdhch.public.blob.vercel-storage.com/RealEstate_AiAds.mp4" type="video/mp4">
+        Your browser does not support HTML video.
+      </video>
+      <div class="industry-video-copy">
+        <span class="eyebrow">ARCHITECTURE &amp; INFRASTRUCTURE</span>
+        <h2>Real Estate AI Ads</h2>
+        <p>A cinematic real-estate promotional concept for properties, spaces and developments.</p>
+        <small class="video-hint">Use the video controls to play with sound.</small>
+      </div>
+    </article>
+
+    <article class="industry-video-card" data-category="Ad Films">
+      <video controls playsinline preload="metadata" aria-label="Under Armour shoe advertisement">
+        <source src="https://f2oauhmkvacbdhch.public.blob.vercel-storage.com/Under_Armour_Shoe_Adds.mp4" type="video/mp4">
+        Your browser does not support HTML video.
+      </video>
+      <div class="industry-video-copy">
+        <span class="eyebrow">Ad Films</span>
+        <h2>Under Armour Shoe Ads</h2>
+        <p>A bold footwear advertising concept with a sport and performance-inspired direction.</p>
+        <small class="video-hint">Use the video controls to play with sound.</small>
+      </div>
+    </article>
+
+       <article class="industry-video-card" data-category="Others">
+      <video controls playsinline preload="metadata" aria-label="Under Armour shoe advertisement">
+        <source src="https://f2oauhmkvacbdhch.public.blob.vercel-storage.com/CakeBudss.mp4" type="video/mp4">
+        Your browser does not support HTML video.
+      </video>
+      <div class="industry-video-copy">
+        <span class="eyebrow">Others</span>
+        <h2>CakeBudss</h2>
+        <p>A creative food and beverage advertising concept with a focus on visual storytelling.</p>
+        <small class="video-hint">Use the video controls to play with sound.</small>
+      </div>
+    </article>
+
+        <article class="industry-video-card" data-category="Ad Films">
+      <video controls playsinline preload="metadata" aria-label="Under Armour shoe advertisement">
+        <source src="https://f2oauhmkvacbdhch.public.blob.vercel-storage.com/Car_Ai_Ads.mp4" type="video/mp4">
+        Your browser does not support HTML video.
+      </video>
+      <div class="industry-video-copy">
+        <span class="eyebrow">Ad Films</span>
+        <h2>Car AI Ads</h2>
+        <p>A creative car and beverage advertising concept with a focus on visual storytelling.</p>
+        <small class="video-hint">Use the video controls to play with sound.</small>
+      </div>
+    </article>
+
+    
+        <article class="industry-video-card" data-category="Corporate">
+      <video controls playsinline preload="metadata" aria-label="Under Armour shoe advertisement">
+        <source src="https://f2oauhmkvacbdhch.public.blob.vercel-storage.com/TVS_Adds.mp4" type="video/mp4">
+        Your browser does not support HTML video.
+      </video>
+      <div class="industry-video-copy">
+        <span class="eyebrow">Corporate</span>
+        <h2>TVS Ads</h2>
+        <p>A creative corporate advertising concept with a focus on visual storytelling.</p>
+        <small class="video-hint">Use the video controls to play with sound.</small>
+      </div>
+    </article>
+
+      <article class="industry-video-card" data-category="Ai Films">
+      <video controls playsinline preload="metadata" aria-label="Under Armour shoe advertisement">
+        <source src="https://f2oauhmkvacbdhch.public.blob.vercel-storage.com/Ai_Film.mp4" type="video/mp4">
+        Your browser does not support HTML video.
+      </video>
+      <div class="industry-video-copy">
+        <span class="eyebrow">Ai Films</span>
+        <h2>Ai Film</h2>
+        <p>A creative AI-powered film concept with a focus on visual storytelling.</p>
+        <small class="video-hint">Use the video controls to play with sound.</small>
+      </div>
+    </article>
+
+    
+      <article class="industry-video-card" data-category="Others">
+      <video controls playsinline preload="metadata" aria-label="Under Armour shoe advertisement">
+        <source src="https://f2oauhmkvacbdhch.public.blob.vercel-storage.com/ChocoCrazy_AI_Ads.mp4" type="video/mp4">
+        Your browser does not support HTML video.
+      </video>
+      <div class="industry-video-copy">
+        <span class="eyebrow">Others</span>
+        <h2>ChocoCrazy AI Ads</h2>
+        <p>A creative AI-powered advertising concept with a focus on visual storytelling.</p>
+        <small class="video-hint">Use the video controls to play with sound.</small>
+      </div>
+    </article>
+
+    <article class="industry-video-card" data-category="Promotional">
+      <video controls playsinline preload="metadata" aria-label="Veda Ayurveda advertisement">
+        <source src="https://f2oauhmkvacbdhch.public.blob.vercel-storage.com/Veda_Ayurveda.mp4" type="video/mp4">
+        Your browser does not support HTML video.
+      </video>
+      <div class="industry-video-copy">
+        <span class="eyebrow">Promotional</span>
+        <h2>Veda Ayurveda</h2>
+        <p>A wellness-brand promotional concept with a natural, product-led presentation.</p>
+        <small class="video-hint">Use the video controls to play with sound.</small>
+      </div>
+    </article>
+  </div>
+  <p class="industry-empty" id="industryEmpty">No videos are currently assigned to this industry.</p>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-top">
+    <a class="brand footer-brand" href="index.html"><img class="brand-logo" src="Averynza Studios Golden Emblem.png" alt="Averynza Studios"></a>
+    <p>AI-powered films.<br>Advertising. Visual stories.</p>
+    <a class="back-to-top" href="#">Back to top ↑</a>
+  </div>
+  <div class="footer-bottom">
+    <span>© <span id="year">2026</span> Averynza Studios. All rights reserved.</span>
+    <div><a href="index.html#studio">About</a><a href="pricing.html">Packages</a><a href="mailto:averynzastudios@gmail.com">Email</a></div>
+  </div>
+</footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const dropdown = document.querySelector(".nav-dropdown");
+  const button = dropdown?.querySelector(".nav-dropdown-toggle");
+  const menuToggle = document.getElementById("menuToggle");
+  const mainNav = document.getElementById("mainNav");
+  const closeDropdown = () => {
+    dropdown?.classList.remove("is-open");
+    button?.setAttribute("aria-expanded", "false");
+  };
+  if (dropdown && button) {
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      const opening = !dropdown.classList.contains("is-open");
+      closeDropdown();
+      if (opening) {
+        dropdown.classList.add("is-open");
+        button.setAttribute("aria-expanded", "true");
+      }
+    });
+    document.addEventListener("click", (event) => {
+      if (!dropdown.contains(event.target)) closeDropdown();
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") { closeDropdown(); button.focus(); }
+    });
+  }
+  if (menuToggle && mainNav) {
+    menuToggle.addEventListener("click", () => {
+      const opening = menuToggle.getAttribute("aria-expanded") !== "true";
+      menuToggle.setAttribute("aria-expanded", String(opening));
+      menuToggle.setAttribute("aria-label", opening ? "Close navigation" : "Open navigation");
+      mainNav.classList.toggle("is-open", opening);
+      if (!opening) closeDropdown();
+    });
+  }
+  const filterFromHash = () => {
+    const slug = window.location.hash.replace("#", "").toLowerCase();
+    const map = {
+      all: "filter-all", adfilms: "filter-adfilms", aifilms: "filter-aifilms",
+      architecture: "filter-architecture", corporate: "filter-corporate",
+      promo: "filter-promo", social: "filter-social", others: "filter-others"
+    };
+    const target = document.getElementById(map[slug]);
+    if (target) target.click();
+  };
+  filterFromHash();
+  window.addEventListener("hashchange", filterFromHash);
+
+  const year = document.getElementById("year");
+  if (year) year.textContent = new Date().getFullYear();
+});
+</script>
+</body>
+</html>
